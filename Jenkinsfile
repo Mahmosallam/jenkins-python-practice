@@ -5,9 +5,9 @@ pipeline {
         stage('Setup') {
             steps {
                 sh '''
-                    echo "--- Current Directory ---"
+                    
                     pwd
-                    echo "--- List Files ---"
+                    
                     ls
                     
                     # Create virtual environment
@@ -38,7 +38,6 @@ pipeline {
             steps {
                 sh '''
                     . venv/bin/activate
-                    echo "--- Running Integration Test ---"
                     pkill -f "python3 app.py" || true
                     pytest -v test_integration.py
                 '''
